@@ -29,19 +29,22 @@ var columnDefs = [{
         field: "address",
         width: 200,
         filter: true,
-        resizable: true
+        resizable: true,
+        editable: true,
     },
     {
         headerName: "الفرع",
         field: "branch",
         width: 110,
-        filter: true
+        filter: true,
+        editable: true,
     },
     {
         headerName: "المنطقة",
         field: "area",
         width: 110,
-        filter: true
+        filter: true,
+        editable: true,
     },
     {
         headerName: "التاريخ",
@@ -53,7 +56,8 @@ var columnDefs = [{
         headerName: "ملاحظات",
         field: "notes",
         resizable: true,
-        filter: true
+        filter: true,
+        editable: true,
     },
     {
         headerName: "النوع",

@@ -1,0 +1,200 @@
+body {
+    background-image: linear-gradient(rgb(0, 0, 0, 0.28), #592020), url("https://scontent-yyz1-1.cdninstagram.com/v/t51.2885-15/fr/e15/s1080x1080/79031218_189969132202948_595748066583506644_n.jpg?_nc_ht=scontent-yyz1-1.cdninstagram.com&_nc_cat=104&_nc_ohc=zZFxrvmiLcEAX_K6A99&oh=6da169a7a107e5e158ea2692400a9d0a&oe=5F9D09A3");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+
+
+@font-face {
+    font-family: 'Khayal';
+    src: url('fonts/KhayalFont.ttf');
+}
+
+@font-face {
+    font-family: 'GE';
+    src: url('fonts/GE_SS_Two_Light.otf');
+
+}
+
+.container {
+    text-align: right;
+    font-family: "GE";
+
+}
+
+.btn-group-toggle {
+    text-align: left;
+}
+
+.btn .btn-primary .active {
+    background-color: black;
+    color: pink;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#report-form {
+    background: #E4E4E4;
+    border-radius: 40px;
+}
+
+#report-form input,
+#report-form select {
+    border-radius: 40px;
+}
+
+#report-form label {
+    margin-right: 10px;
+}
+
+#submitBtn {
+    border-radius: 40px;
+    border: none;
+    background-color: #E81A1C;
+}
+
+#submitBtn:hover {
+    background-color: #48E873;
+    transition: .3s;
+    color: black;
+}
+
+.footer {
+    text-align: center;
+}
+
+.footer span,
+h3,
+h4 {
+    color: white;
+}
+
+.fab.fa-instagram-square {
+    color: transparent;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.fab.fa-facebook-square {
+    color: #3b5998;
+    background-image: linear-gradient(to bottom, transparent 20%, white 20%, white 93%, transparent 93%);
+    background-size: 55%;
+    background-position: 70% 0;
+    background-repeat: no-repeat;
+}
+
+.fab.fa-twitter-square {
+    color: #00aced
+}
+
+.vertical-line {
+    border-right: 2px solid white;
+    margin: 0px 20px 0px 20px;
+}
+
+
+
+.login {
+    border-radius: 20px;
+    background-color: #48E873;
+    color: black;
+}
+
+.login:hover {
+    background-color: #E81A1C;
+    transition: .3s;
+    color: white;
+}
+
+
+
+.head {
+    border: 1px solid #48E873;
+    background-color: #48E873;
+    border-radius: 4px;
+    display: inline-block;
+    text-align: center;
+    padding: 8px;
+    position: relative;
+    bottom: 50px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -o-user-select: none;
+}
+
+.kwat-head {
+    font-family: 'Khayal';
+    font-weight: bold;
+    color: gold;
+}
+
+.declaration {
+    color: white;
+    text-align: center;
+}
+
+/* Some style for Select */
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url('https://www.dlf.pt/png/big/10/102754_gray-arrow-png.png');
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+select:hover {
+    border-color: #888;
+}
+
+select:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
+    box-shadow: 0 0 0 3px -moz-mac-focusring;
+    color: #222;
+    outline: none;
+}
+
+select option {
+    font-weight: normal;
+}
+
+/* Support for rtl text, explicit support for Arabic and Hebrew */
+*[dir="rtl"] select,
+:root:lang(ar) select,
+:root:lang(iw) select {
+    background-position: left .7em top 50%, 0 0;
+}
+
+/* Disabled styles */
+select:disabled,
+select[aria-disabled=true] {
+    color: graytext;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22graytext%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+        linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+}
+
+select:disabled:hover,
+select[aria-disabled=true] {
+    border-color: #aaa;
+}
+
+.login-footer {
+    text-align: center;
+}

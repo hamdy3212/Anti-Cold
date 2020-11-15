@@ -37,14 +37,12 @@ var columnDefs = [{
         field: "branch",
         width: 110,
         filter: true,
-        editable: true,
     },
     {
         headerName: "المنطقة",
         field: "area",
         width: 110,
         filter: true,
-        editable: true,
     },
     {
         headerName: "التاريخ",

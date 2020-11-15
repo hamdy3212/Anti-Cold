@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="icon" href="images/snowflake.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/06f3ac6aae.js" crossorigin="anonymous"></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-
 </head>
 
 <body>
@@ -22,9 +22,8 @@
                     <a href="grid.html" class="mx-5 btn btn-info">مشاهدة البلاغات</a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link login px-3" href="#">تسجيل الدخول</a>
+                    <a class="nav-link login px-3" href="signin.html">تسجيل الدخول</a>
                 </li>
-
             </ul>
         </nav>
         <div class="row kwat-head justify-content-center mb-1">
@@ -38,7 +37,7 @@
         <div class="row justify-content-center">
             <form id="report-form" class="card p-4 shadow col-md-8" novalidate>
                 <div class="row justify-content-center">
-                    <h1 class="head shadow">تسجيل بلاغ جديد</h1>
+                    <h2 class="head shadow">تسجيل بلاغ جديد</h2>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -58,15 +57,14 @@
                 <div class="form-group">
                     <label for="العنوان">
                         عنوان الحالة بالتفصيل</label>
-                    <input type="text" class="form-control" id="العنوان" placeholder="9 شارع حمدي يوسف امام مطعم كنتاكي"
-                        required>
+                    <input type="text" class="form-control" id="العنوان" placeholder="" required>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="الفرع">
                             اقرب فرع</label>
                         <select id="الفرع" class="form-control select-css" required>
-                            <option disabled selected value="">اختر...</option>
+                            <option disabled selected value=""></option>
                             <option value="مدينة_نصر">
                                 مدينة نصر</option>
                             <option value="المهندسين">
@@ -92,7 +90,7 @@
                         <label for="المنطقة">
                             المنطقة</label>
                         <select id="المنطقة" class="form-control" required>
-                            <option disabled selected value="">اختر اقرب فرع اولًا</option>
+                            <option disabled value="">اختر اقرب فرع اولًا</option>
                         </select>
                     </div>
                 </div>
@@ -101,7 +99,7 @@
                         <label for="النوع">
                             النوع</label>
                         <select id="النوع" class="form-control" required>
-                            <option disabled selected value="">اختر...</option>
+                            <option disabled selected value=""></option>
                             <option value="ذكر">
                                 رجل</option>
                             <option value="انثى">
@@ -116,7 +114,7 @@
                         <label for="مشاهدات">
                             عدد مرات مشاهدة الحالة</label>
                         <select id="مشاهدات" class="form-control" required>
-                            <option disabled selected value="">اختر...</option>
+                            <option disabled selected value=""></option>
                             <option value="مرة">
                                 مرة</option>
                             <option value="اكثر من مرة">
@@ -135,7 +133,7 @@
                             <label for="السكن">
                                 سكن الحالة</label>
                             <select id="السكن" class="form-control" required>
-                                <option disabled selected value="">اختر...</option>
+                                <option disabled selected value=""></option>
                                 <option value="بمأوى">
                                     بمأوى</option>
                                 <option value="بدون مأوى">
@@ -144,25 +142,27 @@
                         </div>
                     </div>
                     <div class="col-md-4 mr-auto">
-                        <button class="btn btn-lg  btn-block btn-primary mt-4" type="submit" id="submitBtn"
-                            onclick="submitClick()">
+                        <button class="btn btn-lg btn-block btn-primary mt-4" type="submit" id="submitBtn">
                             تسجيل
                         </button>
                     </div>
+
                 </div>
             </form>
         </div>
 
         <div class="footer my-3" dir="ltr" lang="en">
-            <h3>للتطوع معنا <a href="#" style="color: #E81A1C;"> اضغط هنا</a> </h3>
+            <h3>للتطوع معنا <a target="_blank"
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSfdn8EfhE3azxcB0TShvyhswbv5AiBRk-SoL8nXg1iRpa1S5g/viewform"
+                    style="color: #E81A1C;"> اضغط هنا</a> </h3>
             <hr style="width: 200px; background-color: white;">
             <h4>تابعونا على</h4>
-            <a href="#">
-                <span><i class="fab fa-facebook-square"></i> @ResalaClothing</span>
+            <a href="https://www.facebook.com/resalaclothing">
+                <i class="fab fa-facebook-square"></i> ResalaClothing
             </a>
             <span class="vertical-line"></span>
-            <a href="#" class="mb-5 mb-sm-5">
-                <span><i class="fab fa-instagram-square"></i> @ResalaClothing</span>
+            <a href="https://www.instagram.com/resalaclothing/" class="mb-5 mb-sm-5">
+                <i class="fab fa-instagram-square"></i> ResalaClothing
             </a>
         </div>
     </div>
@@ -188,7 +188,6 @@
 
     <script src="scripts/config.js"></script>
 
-    <script src="scripts/script.js"></script>
 
     <script src="scripts/firebasescript.js"></script>
 

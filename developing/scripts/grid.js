@@ -37,12 +37,14 @@ var columnDefs = [{
         field: "branch",
         width: 110,
         filter: true,
+        editable: true
     },
     {
         headerName: "المنطقة",
         field: "area",
         width: 110,
         filter: true,
+        editable: true
     },
     {
         headerName: "التاريخ",
@@ -74,7 +76,24 @@ var columnDefs = [{
         field: "seen",
         width: 110,
         filter: true
-    },{
+    },
+    {
+        headerName: "فيدباك تواصل اول",
+        field: "first-feedback",
+        width: 150,
+        filter: true,
+        resizable: true,
+        editable: true,
+    },
+    {
+        headerName: "فيدباك تواصل ثاني",
+        field: "second-feedback",
+        width: 160,
+        filter: true,
+        resizable: true,
+        editable: true,
+    },
+    {
         headerName: "الفيدباك",
         field: "feed_back",
         width: 110,
@@ -160,12 +179,10 @@ function getData(){
         Subject: "test",
     }
     wb.SheetNames.push("Test Sheet");
-    console.log(selectedData);
     let data = selectedData.map(obj => Object.values(obj));
     dataDefs = ['العنوان','التطبيق','المنطقة','البطاطين','الفرع','عدد الحالات','عدد القطع','تاريخ التسجيل','الفيدباك','نوع الفيدباك','الجنس','تاريخ المساعدة','id','الوجبات','الاسم','الملاحظات','الهاتف','pushid','عدد مرات الرؤية','السكن'];
     data.unshift(dataDefs);
     var ws = XLSX.utils.aoa_to_sheet(data);
-    console.log(data);
     wb.Sheets["Test Sheet"] = ws;
     
     var wbout = XLSX.write(wb, {bookType:"xlsx", type: "binary"});
@@ -179,7 +196,6 @@ function getData(){
 }
 
 function onCellValueChanged(event) {
-    console.log('Data after change is', event.data);
     ref.child('reports').child(event.data.pushid).update(event.data);
   }
   

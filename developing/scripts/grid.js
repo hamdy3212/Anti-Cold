@@ -1,5 +1,5 @@
 var columnDefs = [{
-        headerName: "ID",
+        headerName: "0ID",
         field: "id",
         width: 90,
         filter: true,
@@ -79,7 +79,7 @@ var columnDefs = [{
     },
     {
         headerName: "فيدباك تواصل اول",
-        field: "first-feedback",
+        field: "first_feedback",
         width: 150,
         filter: true,
         resizable: true,
@@ -87,7 +87,7 @@ var columnDefs = [{
     },
     {
         headerName: "فيدباك تواصل ثاني",
-        field: "second-feedback",
+        field: "second_feedback",
         width: 160,
         filter: true,
         resizable: true,
@@ -145,6 +145,15 @@ var columnDefs = [{
         editable: true,
     },
 ];
+
+function swap(input, index_A, index_B) {
+    let temp = input[index_A];
+
+    input[index_A] = input[index_B];
+    input[index_B] = temp;
+}
+
+
 // specify the data
 var rowData = [];
 
@@ -180,8 +189,33 @@ function getData(){
     }
     wb.SheetNames.push("Test Sheet");
     let data = selectedData.map(obj => Object.values(obj));
-    dataDefs = ['العنوان','التطبيق','المنطقة','البطاطين','الفرع','عدد الحالات','عدد القطع','تاريخ التسجيل','الفيدباك','نوع الفيدباك','الجنس','تاريخ المساعدة','id','الوجبات','الاسم','الملاحظات','الهاتف','pushid','عدد مرات الرؤية','السكن'];
+    dataDefs = ["العنوان","app","المنطقة","البطاطين","الفرع","عدد الحالات","عدد الفطع","تاريخ البلاغ","فيدباك","تفاصيل البلاغ","نوع الفيدباك","فيدباك اول","الجنس","تاريخ المساعدة","id","الوجبات","الاسم","الملاحظات","الهاتف","push id","فيدباك تاني","عدد مرات المشاهدة","الماوي"];
     data.unshift(dataDefs);
+    data.forEach(element => {
+        element.splice(1,1);
+        element.splice(18,1);
+    });
+    data.forEach(element => {
+        swap(element,0,13);
+        swap(element,1,15);
+        swap(element,2,17);
+        swap(element,3,13);
+        swap(element,4,13);
+        swap(element,5,15);
+        swap(element,7,16);
+        swap(element,8,11);
+        swap(element,9,20);
+        swap(element,10,19);
+        swap(element,11,19);
+        swap(element,12,18);
+        swap(element,13,16);
+        swap(element,14,20);
+        swap(element,15,18);
+        swap(element,18,20);
+        element.splice(19,1);
+    });
+    
+
     var ws = XLSX.utils.aoa_to_sheet(data);
     wb.Sheets["Test Sheet"] = ws;
     

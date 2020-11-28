@@ -53,11 +53,15 @@ form.addEventListener("submit", async (e) => {
             feed_back: '',
             case_num: '',
             feed_back_details: '',
+            feed_back_type: '',
+            first_feedback: '',
+            second_feedback: '',
             help_date: '',
             blankets: '',
             pushid: key,
             meals: '',
-            clothes_num: ''
+            clothes_num: '',
+            id: '',
         }
         push.set(data);
         location.replace("success.html")

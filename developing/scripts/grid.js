@@ -214,7 +214,7 @@ function getData(){
         swap(element,18,20);
         element.splice(19,1);
     });
-    
+    console.log(data)
 
     var ws = XLSX.utils.aoa_to_sheet(data);
     wb.Sheets["Test Sheet"] = ws;

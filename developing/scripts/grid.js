@@ -1,5 +1,5 @@
 var columnDefs = [{
-        headerName: "0ID",
+        headerName: "ID",
         field: "id",
         width: 90,
         filter: true,
@@ -124,6 +124,13 @@ var columnDefs = [{
         editable: true,
     },
     {
+        headerName: "اسم الحالة",
+        field: "case_name",
+        width: 160,
+        filter: true,
+        editable: true,
+    },
+    {
         headerName: "البطاطين",
         field: "blankets",
         width: 110,
@@ -148,7 +155,6 @@ var columnDefs = [{
 
 function swap(input, index_A, index_B) {
     let temp = input[index_A];
-
     input[index_A] = input[index_B];
     input[index_B] = temp;
 }
@@ -165,23 +171,26 @@ var gridOptions = {
     rowSelection: 'multiple',
     onCellValueChanged: onCellValueChanged,
 
-};
 
-var gridDiv = document.querySelector('#myGrid');
-new agGrid.Grid(gridDiv, gridOptions);
-var ref = firebase.database().ref();
-var id = 1;
-     var read = ref.child('reports').on('child_added', function (snapshot) {
+};
+document.addEventListener('DOMContentLoaded', function () {
+
+    var gridDiv = document.querySelector('#myGrid');
+    new agGrid.Grid(gridDiv, gridOptions);
+    var ref = firebase.database().ref();
+    var id = 1;
+    var read = ref.child('reports').on('child_added', function (snapshot) {
         var data = snapshot.val();
         data.id = id++;
         rowData.push(data);
         gridOptions.api.setRowData(rowData);
     })
-    
-   
-function getData(){
+})
+
+
+function getData() {
     let selectedNodes = gridOptions.api.getSelectedNodes();
-	let selectedData = selectedNodes.map(node => node.data);
+    let selectedData = selectedNodes.map(node => node.data);
     var wb = XLSX.utils.book_new();
     wb.probs = {
         Title: "test",
@@ -189,48 +198,51 @@ function getData(){
     }
     wb.SheetNames.push("Test Sheet");
     let data = selectedData.map(obj => Object.values(obj));
-    dataDefs = ["العنوان","app","المنطقة","البطاطين","الفرع","عدد الحالات","عدد الفطع","تاريخ البلاغ","فيدباك","تفاصيل البلاغ","نوع الفيدباك","فيدباك اول","الجنس","تاريخ المساعدة","id","الوجبات","الاسم","الملاحظات","الهاتف","push id","فيدباك تاني","عدد مرات المشاهدة","الماوي"];
+    dataDefs = ["العنوان", "app", "المنطقة", "البطاطين", "الفرع", "اسم الحالة","عدد الحالات", "عدد الفطع", "تاريخ البلاغ", "فيدباك", "تفاصيل البلاغ", "نوع الفيدباك", "فيدباك اول", "الجنس", "تاريخ المساعدة", "id", "الوجبات", "الاسم", "الملاحظات", "الهاتف", "push id", "فيدباك تاني", "عدد مرات المشاهدة", "الماوي"];
     data.unshift(dataDefs);
     data.forEach(element => {
-        element.splice(1,1);
-        element.splice(18,1);
+        element.splice(1, 1);
+        element.splice(18, 1);
     });
     data.forEach(element => {
-        swap(element,0,13);
-        swap(element,1,15);
-        swap(element,2,17);
-        swap(element,3,13);
-        swap(element,4,13);
-        swap(element,5,15);
-        swap(element,7,16);
-        swap(element,8,11);
-        swap(element,9,20);
-        swap(element,10,19);
-        swap(element,11,19);
-        swap(element,12,18);
-        swap(element,13,16);
-        swap(element,14,20);
-        swap(element,15,18);
-        swap(element,18,20);
-        element.splice(19,1);
+        swap(element, 0, 13);
+        swap(element, 1, 15);
+        swap(element, 2, 17);
+        swap(element, 3, 13);
+        swap(element, 4, 13);
+        swap(element, 5, 15);
+        swap(element, 7, 16);
+        swap(element, 8, 11);
+        swap(element, 9, 20);
+        swap(element, 10, 19);
+        swap(element, 11, 19);
+        swap(element, 12, 18);
+        swap(element, 13, 16);
+        swap(element, 14, 20);
+        swap(element, 15, 18);
+        swap(element, 18, 20);
+        element.splice(19, 1);
     });
-    console.log(data)
 
     var ws = XLSX.utils.aoa_to_sheet(data);
     wb.Sheets["Test Sheet"] = ws;
-    
-    var wbout = XLSX.write(wb, {bookType:"xlsx", type: "binary"});
-    function s2ab(s){
+
+    var wbout = XLSX.write(wb, {
+        bookType: "xlsx",
+        type: "binary"
+    });
+
+    function s2ab(s) {
         var buf = new ArrayBuffer(s.length);
         var view = new Uint8Array(buf);
-        for(var i=0; i<s.length;i++) view[i] = s.charCodeAt(i) & 0xFF;
+        for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
         return buf;
     }
-    saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'بلاغات.xlsx');
+    saveAs(new Blob([s2ab(wbout)], {
+        type: "application/octet-stream"
+    }), 'بلاغات.xlsx');
 }
 
 function onCellValueChanged(event) {
     ref.child('reports').child(event.data.pushid).update(event.data);
-  }
-  
-  
+}

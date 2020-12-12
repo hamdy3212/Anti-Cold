@@ -61,11 +61,11 @@ form.addEventListener("submit", async (e) => {
             pushid: key,
             meals: '',
             clothes_num: '',
+            case_name: '',
             id: '',
         }
         push.set(data);
         location.replace("success.html")
-
     }
 
 });

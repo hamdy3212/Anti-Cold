@@ -22,7 +22,8 @@ var columnDefs = [{
         field: "phoneNo",
         width: 120,
         filter: true,
-        resizable: true
+        resizable: true,
+        editable: true,
     },
     {
         headerName: "العنوان",
@@ -199,11 +200,17 @@ function getData() {
     wb.SheetNames.push("Test Sheet");
     let data = selectedData.map(obj => Object.values(obj));
     dataDefs = ["العنوان", "app", "المنطقة", "البطاطين", "الفرع", "اسم الحالة","عدد الحالات", "عدد الفطع", "تاريخ البلاغ", "فيدباك", "تفاصيل البلاغ", "نوع الفيدباك", "فيدباك اول", "الجنس", "تاريخ المساعدة", "id", "الوجبات", "الاسم", "الملاحظات", "الهاتف", "push id", "فيدباك تاني", "عدد مرات المشاهدة", "الماوي"];
+    console.log(data);
     data.unshift(dataDefs);
-    data.forEach(element => {
+
+   data.forEach(element => {
+    element.push(element[5]);
         element.splice(1, 1);
+        element.splice(4, 1);
         element.splice(18, 1);
+        
     });
+    
     data.forEach(element => {
         swap(element, 0, 13);
         swap(element, 1, 15);
@@ -244,5 +251,9 @@ function getData() {
 }
 
 function onCellValueChanged(event) {
-    ref.child('reports').child(event.data.pushid).update(event.data);
+    
+    if(event.column.colId != "phoneNo"){
+        firebase.database().ref().child('reports').child(event.data.pushid).update(event.data);
+    }
+    
 }

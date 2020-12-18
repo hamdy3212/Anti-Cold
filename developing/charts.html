@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <title>احصائيات</title>
+  <link rel="icon" href="images/snowflake.png" type="image/x-icon" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+  <link rel="stylesheet" href="charts.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">محمد احمد <br> فرع المهندسين</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse container" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#" style=" color:black; background-color: aqua; border-radius: 20px;">احصائيات <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" style=" color:black; background-color: aqua; border-radius: 20px;">عرض البلاغات</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <div class="container mt-5" style="text-align: center">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card" style="background-color: aquamarine">
+          <h3>340</h3>
+          <p>اجمالي عدد</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="background-color: rgb(253, 83, 211)">
+          <h3>340</h3>
+          <p>اجمالي عدد</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="background-color: rgb(255, 194, 64)">
+          <h3>340</h3>
+          <p>اجمالي عدد</p>
+        </div>
+      </div>
+    </div>
+    <div class="card p-2" style="
+          display: inline-block;
+          position: relative;
+          top: 35px;
+          background-color: rgb(14, 33, 88);
+          color: white;
+        ">
+      <h4>تقرير المساعدة</h4>
+    </div>
+    <div class="row py-5 my-2" style="background-color: white; border-radius: 20px">
+      <div class="col-md-4">
+        <div class="card" style="background-color: aquamarine">
+          <h3>340</h3>
+          <p>اجمالي عدد</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="background-color: rgb(253, 83, 211)">
+          <h3>340</h3>
+          <p>اجمالي عدد</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="background-color: rgb(255, 194, 64)">
+          <h3>340</h3>
+          <p>اجمالي عدد</p>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-3">
+        <div class="card">
+          <div>
+            <div class="card px-3 py-1" style="
+                  display: inline-block;
+                  position: relative;
+                  bottom: 20px;
+                  border: 1px solid rgb(14, 33, 88);
+                  z-index: 1;
+                  background-color: rgb(14, 33, 88);
+                  color: white;
+                ">
+              <h5>تقرير الفروع</h5>
+            </div>
+          </div>
+          <p>مدينة نصر</p>
+          <p>المهندسين</p>
+          <p>اكتوبر</p>
+          <p>مصر الجديدة</p>
+          <p>فيصل</p>
+          <p>حلوان</p>
+          <p>المقطم</p>
+          <p>اسكندرية</p>
+          <p>المعادي</p>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="card">
+          <canvas id="myChart" width="400" height="150"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-md-3">
+        <div class="card">
+          <div>
+            <div class="card px-3 py-1" style="
+                  display: inline-block;
+                  position: relative;
+                  bottom: 30px;
+                  border: 1px solid rgb(14, 33, 88);
+                  z-index: 1;
+                  background-color: rgb(14, 33, 88);
+                  color: white;
+                ">
+              <h5>Top 10</h5>
+              <h6>مناطق البلاغات</h6>
+            </div>
+          </div>
+          <p>مدينة نصر</p>
+          <p>المهندسين</p>
+          <p>اكتوبر</p>
+          <p>مصر الجديدة</p>
+          <p>فيصل</p>
+          <p>حلوان</p>
+          <p>المقطم</p>
+          <p>اسكندرية</p>
+          <p>المعادي</p>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="card">
+          <div>
+            <div class="card px-5 py-1" style="
+                  display: inline-block;
+                  position: relative;
+                  bottom: 30px;
+                  border: 1px solid rgb(14, 33, 88);
+                  z-index: 1;
+                  background-color: rgb(14, 33, 88);
+                  color: white;
+                ">
+              <h5>
+                تقرير<br />
+                التعامل
+              </h5>
+            </div>
+          </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="cont" data-pct="100">
+                  <svg id="svg" width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+                    <circle id="repeated-bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+                  </svg>
+                </div>
+                  <h2 class="mb-5">مكرر</h2>
+              </div>
+              <div class="col-md-4">
+                <div class="cont" data-pct="100">
+                  <svg id="svg" width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+                    <circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+                  </svg>
+                </div>
+                  <h2 class="mb-5">مكرر</h2>
+              </div>
+              <div class="col-md-4">
+                <div class="cont" data-pct="100">
+                  <svg id="svg" width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+                    <circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+                  </svg>
+                </div>
+                  <h2 class="mb-5">مكرر</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="cont" data-pct="100">
+                  <svg id="svg" width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+                    <circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+                  </svg>
+                </div>
+                  <h2 class="mb-5">مكرر</h2>
+              </div>
+              <div class="col-md-6">
+                <div class="cont" data-pct="100">
+                  <svg id="svg" width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <circle r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+                    <circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+                  </svg>
+                </div>
+                  <h2 class="mb-5">مكرر</h2>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <script src="scripts/charts.js"></script>
+</body>
+
+</html>

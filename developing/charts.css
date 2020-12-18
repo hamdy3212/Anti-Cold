@@ -1,0 +1,48 @@
+body{
+    background-color: rgb(223, 223, 223);
+}
+.card {
+    text-align: center;
+    border-radius: 10px;
+}
+#svg circle {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1s linear;
+    stroke: #666;
+    stroke-width: 0.7em;
+  }
+  #svg #bar {
+    stroke: #442804;
+  }
+  #svg #repeated-bar {
+      stroke: aqua;
+  }
+  .cont {
+    display: block;
+    height: 200px;
+    width: 200px;
+    margin: 2em auto;
+    border-radius: 100%;
+    position: relative;
+  }
+  .cont:after {
+    position: absolute;
+    display: block;
+    height: 160px;
+    width: 160px;
+    left: 50%;
+    top: 50%;
+    content: attr(data-pct) "%";
+    margin-top: -80px;
+    margin-left: -80px;
+    border-radius: 100%;
+    line-height: 160px;
+    font-size: 2em;
+  }
+  
+ 
+
+
+ 
+
+  

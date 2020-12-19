@@ -46,6 +46,7 @@ let totalReports = 0,
   faisal = 0;
   helwan = 0;
   mohafazat = 0;
+ let districts = new Array();
 
 var ref = firebase.database().ref();
 ref
@@ -114,10 +115,28 @@ ref
       if(data[report].clothes_num){
         clothNum+= parseInt(data[report].clothes_num, 10);
       }
+
+      districts.push(data[report].area);
+
+
       totalReports++;
     }
-    
+    //get top 10 districts
+    districts = getFrequency(districts);
+    var sortedDistricts = [];
+    for (var item in districts) {
+      sortedDistricts.push([item, districts[item]]);
+    }
 
+    sortedDistricts.sort(function(a, b) {
+      return a[1] - b[1];
+    });
+
+    var top10Districts = sortedDistricts.slice(Math.max(sortedDistricts.length - 10, 0));
+    
+    
+    
+    //get percentage of each branch
     nasrCity = (nasrCity/totalReports) * 100;
     masrElgdeda =  (masrElgdeda / totalReports) * 100;
     mohandseen = (mohandseen / totalReports) * 100;
@@ -129,7 +148,6 @@ ref
     maadi =  (maadi / totalReports) * 100;
     mohafazat = (mohafazat / totalReports) * 100;
     
-
     nasrCity = Math.round(nasrCity);
     masrElgdeda = Math.round(masrElgdeda);
     mohandseen = Math.round(mohandseen);
@@ -140,19 +158,6 @@ ref
     mokatem = Math.round(mokatem);
     maadi = Math.round(maadi);
     mohafazat = Math.round(mohafazat);
-
-    console.log(nasrCity);
-    console.log(masrElgdeda);
-    console.log(mohandseen);
-    console.log(alex);
-    console.log(october);
-    console.log(helwan);
-    console.log(faisal);
-    console.log(mokatem);
-    console.log(maadi);
-    console.log(mohafazat);
-
-    console.log((nasrCity+masrElgdeda+mohafazat+mohandseen+alex+october+helwan+faisal+mokatem+maadi));
 
 
   })
@@ -198,4 +203,14 @@ ref
       .querySelector("#notExist-pct")
       .setAttribute("data-pct", notExistPct.toFixed());
   });
-
+  const getFrequency = (array) => {
+    const map = {};
+    array.forEach(item => {
+       if(map[item]){
+          map[item]++;
+       }else{
+          map[item] = 1;
+       }
+    });
+    return map;
+ };

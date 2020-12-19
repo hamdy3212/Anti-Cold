@@ -32,6 +32,21 @@ let totalReports = 0,
   unworthy = 0,
   processing = 0,
   notExist = 0;
+  caseNum = 0;
+  blankets = 0;
+  clothNum = 0;
+  meals = 0;
+  nasrCity = 0;
+  masrElgdeda = 0;
+  mohandseen = 0;
+  maadi = 0;
+  alex = 0;
+  october = 0;
+  mokatem = 0;
+  faisal = 0;
+  helwan = 0;
+  mohafazat = 0;
+
 var ref = firebase.database().ref();
 ref
   .child("reports")
@@ -54,8 +69,92 @@ ref
         default:
           other++;
       }
+      switch (data[report].branch.trim()) {
+        case "مدينة_نصر":
+          nasrCity++;
+          break;
+        case "مصر_الجديدة":
+          masrElgdeda++;
+          break;
+        case "المهندسين":
+          mohandseen++;
+          break;
+        case "اسكندرية":
+          alex++;
+          break;
+        case "اكتوبر":
+          october++;
+          break;
+        case "حلوان":
+          helwan++;
+          break;
+        case "فيصل":
+          faisal++;
+          break;
+        case "المقطم":
+          mokatem++;
+          break;
+        case "المعادي":
+          maadi++;
+          break;
+        
+        default:
+          mohafazat++;
+          break;
+      }
+      if(data[report].blankets){
+        blankets+= parseInt(data[report].blankets, 10);
+      }
+      if(data[report].meals){
+        meals+= parseInt(data[report].meals, 10);
+      }
+      if(data[report].case_num){
+        caseNum+= parseInt(data[report].case_num, 10);
+      }
+      if(data[report].clothes_num){
+        clothNum+= parseInt(data[report].clothes_num, 10);
+      }
       totalReports++;
     }
+    
+
+    nasrCity = (nasrCity/totalReports) * 100;
+    masrElgdeda =  (masrElgdeda / totalReports) * 100;
+    mohandseen = (mohandseen / totalReports) * 100;
+    alex = (alex / totalReports) * 100;
+    october = (october / totalReports) * 100;
+    helwan = (helwan / totalReports) * 100;
+    faisal = (faisal / totalReports) * 100;
+    mokatem =  (mokatem / totalReports) * 100;
+    maadi =  (maadi / totalReports) * 100;
+    mohafazat = (mohafazat / totalReports) * 100;
+    
+
+    nasrCity = Math.round(nasrCity);
+    masrElgdeda = Math.round(masrElgdeda);
+    mohandseen = Math.round(mohandseen);
+    alex = Math.round(alex);
+    october = Math.round(october);
+    helwan =  Math.round(helwan);
+    faisal =  Math.round(faisal);
+    mokatem = Math.round(mokatem);
+    maadi = Math.round(maadi);
+    mohafazat = Math.round(mohafazat);
+
+    console.log(nasrCity);
+    console.log(masrElgdeda);
+    console.log(mohandseen);
+    console.log(alex);
+    console.log(october);
+    console.log(helwan);
+    console.log(faisal);
+    console.log(mokatem);
+    console.log(maadi);
+    console.log(mohafazat);
+
+    console.log((nasrCity+masrElgdeda+mohafazat+mohandseen+alex+october+helwan+faisal+mokatem+maadi));
+
+
   })
   .then(() => {
     var c = Math.PI * (90 * 2);
@@ -99,3 +198,4 @@ ref
       .querySelector("#notExist-pct")
       .setAttribute("data-pct", notExistPct.toFixed());
   });
+

@@ -221,7 +221,6 @@ function getData() {
     "عدد مرات المشاهدة",
     "الماوي",
   ];
-  console.log(data);
   data.unshift(dataDefs);
 
   data.forEach((element) => {

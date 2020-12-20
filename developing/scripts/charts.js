@@ -25,28 +25,29 @@ var chart = new Chart(ctx, {
   // Configuration options go here
   options: {},
 });
-let val = 20;
+
 let totalReports = 0,
   done = 0,
   other = 0,
   unworthy = 0,
   processing = 0,
-  notExist = 0;
-  caseNum = 0;
-  blankets = 0;
-  clothNum = 0;
-  meals = 0;
-  nasrCity = 0;
-  masrElgdeda = 0;
-  mohandseen = 0;
-  maadi = 0;
-  alex = 0;
-  october = 0;
-  mokatem = 0;
-  faisal = 0;
-  helwan = 0;
-  mohafazat = 0;
- let districts = new Array();
+  notExist = 0,
+  caseNum = 0,
+  blankets = 0,
+  clothNum = 0,
+  meals = 0,
+  nasrCity = 0,
+  masrElgdeda = 0,
+  mohandseen = 0,
+  maadi = 0,
+  alex = 0,
+  october = 0,
+  mokatem = 0,
+  faisal = 0,
+  helwan = 0,
+  mohafazat = 0,
+  val = 20,
+  districts = new Array();
 
 var ref = firebase.database().ref();
 ref
@@ -98,26 +99,25 @@ ref
         case "المعادي":
           maadi++;
           break;
-        
+
         default:
           mohafazat++;
           break;
       }
-      if(data[report].blankets){
-        blankets+= parseInt(data[report].blankets, 10);
+      if (data[report].blankets) {
+        blankets += parseInt(data[report].blankets, 10);
       }
-      if(data[report].meals){
-        meals+= parseInt(data[report].meals, 10);
+      if (data[report].meals) {
+        meals += parseInt(data[report].meals, 10);
       }
-      if(data[report].case_num){
-        caseNum+= parseInt(data[report].case_num, 10);
+      if (data[report].case_num) {
+        caseNum += parseInt(data[report].case_num, 10);
       }
-      if(data[report].clothes_num){
-        clothNum+= parseInt(data[report].clothes_num, 10);
+      if (data[report].clothes_num) {
+        clothNum += parseInt(data[report].clothes_num, 10);
       }
 
       districts.push(data[report].area);
-
 
       totalReports++;
     }
@@ -128,40 +128,62 @@ ref
       sortedDistricts.push([item, districts[item]]);
     }
 
-    sortedDistricts.sort(function(a, b) {
+    sortedDistricts.sort(function (a, b) {
       return a[1] - b[1];
     });
 
-    var top10Districts = sortedDistricts.slice(Math.max(sortedDistricts.length - 10, 0));
-    
-    
-    
+    top10Districts = sortedDistricts.slice(
+      Math.max(sortedDistricts.length - 10, 0)
+    );
     //get percentage of each branch
-    nasrCity = (nasrCity/totalReports) * 100;
-    masrElgdeda =  (masrElgdeda / totalReports) * 100;
-    mohandseen = (mohandseen / totalReports) * 100;
-    alex = (alex / totalReports) * 100;
-    october = (october / totalReports) * 100;
-    helwan = (helwan / totalReports) * 100;
-    faisal = (faisal / totalReports) * 100;
-    mokatem =  (mokatem / totalReports) * 100;
-    maadi =  (maadi / totalReports) * 100;
-    mohafazat = (mohafazat / totalReports) * 100;
-    
-    nasrCity = Math.round(nasrCity);
-    masrElgdeda = Math.round(masrElgdeda);
-    mohandseen = Math.round(mohandseen);
-    alex = Math.round(alex);
-    october = Math.round(october);
-    helwan =  Math.round(helwan);
-    faisal =  Math.round(faisal);
-    mokatem = Math.round(mokatem);
-    maadi = Math.round(maadi);
-    mohafazat = Math.round(mohafazat);
-
-
+    nasrCity = Math.round((nasrCity / totalReports) * 100);
+    masrElgdeda = Math.round((masrElgdeda / totalReports) * 100);
+    mohandseen = Math.round((mohandseen / totalReports) * 100);
+    alex = Math.round((alex / totalReports) * 100);
+    october = Math.round((october / totalReports) * 100);
+    helwan = Math.round((helwan / totalReports) * 100);
+    faisal = Math.round((faisal / totalReports) * 100);
+    mokatem = Math.round((mokatem / totalReports) * 100);
+    maadi = Math.round((maadi / totalReports) * 100);
+    mohafazat = Math.round((mohafazat / totalReports) * 100);
   })
   .then(() => {
+    document.querySelector("#nasrCityBar").style.width = nasrCity + "%";
+    document.querySelector("#nasrCity").innerHTML = `<span>${nasrCity}%</span>`;
+
+    document.querySelector("#elmohandsenBar").style.width = mohandseen + "%";
+    document.querySelector(
+      "#elmohandsen"
+    ).innerHTML = `<span>${mohandseen}%</span>`;
+
+    document.querySelector("#octoberBar").style.width = october + "%";
+    document.querySelector("#october").innerHTML = `<span>${october}%</span>`;
+
+    document.querySelector("#masrElgdedaBar").style.width = masrElgdeda + "%";
+    document.querySelector(
+      "#masrElgdeda"
+    ).innerHTML = `<span>${masrElgdeda}%</span>`;
+
+    document.querySelector("#faisalBar").style.width = faisal + "%";
+    document.querySelector("#faisal").innerHTML = `<span>${faisal}%</span>`;
+
+    document.querySelector("#helwanBar").style.width = helwan + "%";
+    document.querySelector("#helwan").innerHTML = `<span>${helwan}%</span>`;
+
+    document.querySelector("#mokatemBar").style.width = mokatem + "%";
+    document.querySelector("#mokatem").innerHTML = `<span>${mokatem}%</span>`;
+
+    document.querySelector("#alexBar").style.width = alex + "%";
+    document.querySelector("#alex").innerHTML = `<span>${alex}%</span>`;
+
+    document.querySelector("#maadiBar").style.width = maadi + "%";
+    document.querySelector("#maadi").innerHTML = `<span>${maadi}%</span>`;
+
+    document.querySelector("#mohafazatBar").style.width = mohafazat + "%";
+    document.querySelector(
+      "#mohafazat"
+    ).innerHTML = `<span>${mohafazat}%</span>`;
+
     var c = Math.PI * (90 * 2);
     // done circle chart
     let donePct = (done / totalReports) * 100;
@@ -203,14 +225,14 @@ ref
       .querySelector("#notExist-pct")
       .setAttribute("data-pct", notExistPct.toFixed());
   });
-  const getFrequency = (array) => {
-    const map = {};
-    array.forEach(item => {
-       if(map[item]){
-          map[item]++;
-       }else{
-          map[item] = 1;
-       }
-    });
-    return map;
- };
+const getFrequency = (array) => {
+  const map = {};
+  array.forEach((item) => {
+    if (map[item]) {
+      map[item]++;
+    } else {
+      map[item] = 1;
+    }
+  });
+  return map;
+};

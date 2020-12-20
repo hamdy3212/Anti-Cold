@@ -41,4 +41,21 @@ body{
 }
 
 
+.progress {
+  background-color: rgb(194, 232, 250);
+  border-radius: 10px;
+  height:20px;
+  width: 110%
+}
+.progress-bar{
+  background-color: rgb(30, 8, 112);
+}
+.takrer {
+background-color: rgba(105, 182, 245);
+color: white;
+border-radius: 30px 30px 90px 30px;
+}
 
+.takrer p {
+  text-align: left;
+}

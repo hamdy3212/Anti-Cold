@@ -10,19 +10,31 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="charts.css" />
+    <link rel="stylesheet" href="style.css" />
+
     <script
       src="https://kit.fontawesome.com/dc47a1c277.js"
       crossorigin="anonymous"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark"
+      style="
+        border-radius: 0 0 30px 30px;
+        background: rgb(4, 8, 105);
+        background: linear-gradient(
+          90deg,
+          rgba(4, 8, 105, 1) 0%,
+          rgba(3, 0, 34, 1) 46%
+        );
+      "
+    >
       <a class="navbar-brand" href="#"
-        >محمد احمد <br />
-        فرع المهندسين</a
+        ><i class="fas fa-portrait fa-xl ml-3"></i>محمد احمد <br />
+        <i class="fas fa-portrait fa-xl ml-3"></i> فرع المهندسين</a
       >
       <button
         class="navbar-toggler"
@@ -42,27 +54,36 @@
       >
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a
-              class="nav-link"
-              href="#"
-              style="color: black; background-color: aqua; border-radius: 20px"
-              >احصائيات <span class="sr-only">(current)</span></a
+            <a class="nav-link blue-gradient ml-5" href="charts.html">
+              <i class="fas fa-portrait fa-xl ml-3"></i> احصائيات
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link blue-gradient ml-5" href="grid.html"
+              >عرض البلاغات</a
             >
           </li>
           <li class="nav-item">
-            <a
-              class="nav-link"
-              href="#"
-              style="color: black; background-color: aqua; border-radius: 20px"
-              >عرض البلاغات</a
+            <a class="nav-link ml-5" style="background-color: red" href="#"
+              >تسجيل الخروج</a
             >
           </li>
         </ul>
       </div>
     </nav>
-
+    <div
+      class="a my-5 blue-gradient"
+      style="
+        position: absolute;
+        right: 0;
+        border-radius: 20px 0 0 20px;
+        padding: 5px 30px 5px 30px;
+      "
+    >
+      <h4><i class="fas fa-portrait fa-xl ml-3"></i>إحصائيات</h4>
+    </div>
     <div class="container my-5" style="text-align: center">
-      <div class="row">
+      <div class="row" style="margin-top: 110px">
         <div class="col-md-4">
           <div class="card pt-2 blue-gradient">
             <h3>
@@ -167,7 +188,7 @@
                   background-color: rgb(14, 33, 88);
                 "
               >
-                <h5>Top 10</h5>
+                <h5>اعلى 10</h5>
                 <h6>مناطق البلاغات</h6>
               </div>
             </div>

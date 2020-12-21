@@ -10,6 +10,10 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="charts.css" />
+    <script
+      src="https://kit.fontawesome.com/dc47a1c277.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
@@ -57,24 +61,29 @@
       </div>
     </nav>
 
-    <div class="container mt-5" style="text-align: center">
+    <div class="container my-5" style="text-align: center">
       <div class="row">
         <div class="col-md-4">
-          <div class="card" style="background-color: aquamarine">
-            <h3>340</h3>
-            <p>اجمالي عدد</p>
+          <div class="card pt-2 blue-gradient">
+            <h3>
+              <i class="fas fa-portrait fa-xl ml-3"></i>
+              <span id="caseNum">0</span>
+            </h3>
+            <p>إجمالي عدد الحالات</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card" style="background-color: rgb(253, 83, 211)">
-            <h3>340</h3>
-            <p>اجمالي عدد</p>
+          <div class="card pt-2 pink-gradient">
+            <h3 id="volunteerNum"><i class="fas fa-portrait ml-3"></i>0</h3>
+            <p>اجمالي عدد المتطوعين</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card" style="background-color: rgb(255, 194, 64)">
-            <h3>340</h3>
-            <p>اجمالي عدد</p>
+          <div class="card pt-2 orange-gradient">
+            <h3>
+              <i class="fas fa-portrait ml-3"></i><span id="reportsNum">0</span>
+            </h3>
+            <p>اجمالي عدد البلاغات</p>
           </div>
         </div>
       </div>
@@ -85,7 +94,6 @@
           position: relative;
           top: 35px;
           background-color: rgb(14, 33, 88);
-          color: white;
         "
       >
         <h4>تقرير المساعدة</h4>
@@ -95,26 +103,32 @@
         style="background-color: white; border-radius: 20px"
       >
         <div class="col-md-4">
-          <div class="card" style="background-color: aquamarine">
-            <h3>340</h3>
-            <p>اجمالي عدد</p>
+          <div class="card pt-2 blue-gradient">
+            <h3>
+              <i class="fas fa-portrait ml-3"></i><span id="blankets">0</span>
+            </h3>
+            <p>اجمالي عدد البطاطين</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card" style="background-color: rgb(253, 83, 211)">
-            <h3>340</h3>
-            <p>اجمالي عدد</p>
+          <div class="card pt-2 pink-gradient">
+            <h3>
+              <i class="fas fa-portrait ml-3"></i><span id="clothes">0</span>
+            </h3>
+            <p>اجمالي عدد الملابس</p>
           </div>
         </div>
         <div class="col-md-4">
-          <div class="card" style="background-color: rgb(255, 194, 64)">
-            <h3>340</h3>
-            <p>اجمالي عدد</p>
+          <div class="card pt-2 orange-gradient">
+            <h3>
+              <i class="fas fa-portrait ml-3"></i><span id="meals">0</span>
+            </h3>
+            <p>اجمالي عدد الوجبات</p>
           </div>
         </div>
       </div>
       <div class="row mt-4">
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div class="card takrer">
             <div>
               <div
@@ -123,136 +137,25 @@
                   display: inline-block;
                   position: relative;
                   bottom: 20px;
-                  border: 1px solid rgb(14, 33, 88);
                   z-index: 1;
                   background-color: rgb(14, 33, 88);
-                  color: white;
                 "
               >
                 <h5>تقرير الفروع</h5>
               </div>
             </div>
-            <div class="row">
-              <div class="col-5">
-                <p>مدينة نصر</p>
-              </div>
-              <div class="col-4 p-0 mt-2">
-                <div class="progress">
-                  <div class="progress-bar" id="nasrCityBar"></div>
-                </div>
-              </div>
-              <div class="col-3 p-0 mt-1" id="nasrCity"></div>
-            </div>
-            <div class="row">
-              <div class="col-5">
-                <p>المهندسين</p>
-              </div>
-              <div class="col-4 p-0 mt-2">
-                <div class="progress">
-                  <div class="progress-bar" id="elmohandsenBar"></div>
-                </div>
-              </div>
-              <div class="col-3 p-0 mt-1" id="elmohandsen"></div>
-            </div>
-            <div class="row">
-              <div class="col-5">
-                <p>اكتوبر</p>
-              </div>
-              <div class="col-4 p-0 mt-2">
-                <div class="progress">
-                  <div class="progress-bar" id="octoberBar"></div>
-                </div>
-              </div>
-              <div class="col-3 p-0 mt-1" id="october"></div>
-            </div>
-            <div class="row">
-              <div class="col-5">
-                <p>مصر الجديدة</p>
-              </div>
-              <div class="col-4 p-0 mt-2">
-                <div class="progress">
-                  <div class="progress-bar" id="masrElgdedaBar"></div>
-                </div>
-              </div>
-              <div class="col-3 p-0 mt-1" id="masrElgdeda"></div>
-            </div>
-            <div class="row">
-              <div class="col-5">
-                <p>فيصل</p>
-              </div>
-              <div class="col-4 p-0 mt-2">
-                <div class="progress">
-                  <div class="progress-bar" id="faisalBar"></div>
-                </div>
-              </div>
-              <div class="col-3 p-0 mt-1" id="faisal"></div>
-            </div>
-            <div class="row">
-              <div class="col-5">
-                <p>حلوان</p>
-              </div>
-              <div class="col-4 p-0 mt-2">
-                <div class="progress">
-                  <div class="progress-bar" id="helwanBar"></div>
-                </div>
-              </div>
-              <div class="col-3 p-0 mt-1" id="helwan"></div>
-            </div>
-            <div class="row">
-              <div class="col-5">
-                <p>المقطم</p>
-              </div>
-              <div class="col-4 p-0 mt-2">
-                <div class="progress">
-                  <div class="progress-bar" id="mokatemBar"></div>
-                </div>
-              </div>
-              <div class="col-3 p-0 mt-1" id="mokatem"></div>
-            </div>
-            <div class="row">
-              <div class="col-5">
-                <p>اسكندرية</p>
-              </div>
-              <div class="col-4 p-0 mt-2">
-                <div class="progress">
-                  <div class="progress-bar" id="alexBar"></div>
-                </div>
-              </div>
-              <div class="col-3 p-0 mt-1" id="alex"></div>
-            </div>
-            <div class="row">
-              <div class="col-5">
-                <p>المعادي</p>
-              </div>
-              <div class="col-4 p-0 mt-2">
-                <div class="progress">
-                  <div class="progress-bar" id="maadiBar"></div>
-                </div>
-              </div>
-              <div class="col-3 p-0 mt-1" id="maadi"></div>
-            </div>
-            <div class="row mb-4">
-              <div class="col-5">
-                <p>محافظات</p>
-              </div>
-              <div class="col-4 p-0 mt-2">
-                <div class="progress">
-                  <div class="progress-bar" id="mohafazatBar"></div>
-                </div>
-              </div>
-              <div class="col-3 p-0 mt-1" id="mohafazat"></div>
-            </div>
+            <div id="fro3" class="pb-5"></div>
           </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
           <div class="card">
             <canvas id="myChart" width="400" height="150"></canvas>
           </div>
         </div>
       </div>
       <div class="row mt-5">
-        <div class="col-md-3">
-          <div class="card">
+        <div class="col-md-4">
+          <div class="card takrer">
             <div>
               <div
                 class="card px-3 py-1"
@@ -260,28 +163,18 @@
                   display: inline-block;
                   position: relative;
                   bottom: 30px;
-                  border: 1px solid rgb(14, 33, 88);
                   z-index: 1;
                   background-color: rgb(14, 33, 88);
-                  color: white;
                 "
               >
                 <h5>Top 10</h5>
                 <h6>مناطق البلاغات</h6>
               </div>
             </div>
-            <p>مدينة نصر</p>
-            <p>المهندسين</p>
-            <p>اكتوبر</p>
-            <p>مصر الجديدة</p>
-            <p>فيصل</p>
-            <p>حلوان</p>
-            <p>المقطم</p>
-            <p>اسكندرية</p>
-            <p>المعادي</p>
+            <div id="bla8at" class="pb-5"></div>
           </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
           <div class="card">
             <div>
               <div
@@ -290,10 +183,8 @@
                   display: inline-block;
                   position: relative;
                   bottom: 30px;
-                  border: 1px solid rgb(14, 33, 88);
                   z-index: 1;
                   background-color: rgb(14, 33, 88);
-                  color: white;
                 "
               >
                 <h5>
@@ -302,7 +193,7 @@
                 </h5>
               </div>
             </div>
-            <div class="row">
+            <div class="row circle-row">
               <div class="col-md-4">
                 <div class="cont" id="done-pct" data-pct="100">
                   <svg
@@ -403,7 +294,7 @@
                 <h2 class="mb-5">غير مستحق</h2>
               </div>
             </div>
-            <div class="row">
+            <div class="row circle-row">
               <div class="col-md-6">
                 <div class="cont" id="processing-pct" data-pct="100">
                   <svg

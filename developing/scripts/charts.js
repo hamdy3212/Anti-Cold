@@ -26,7 +26,7 @@ var chart = new Chart(ctx, {
   options: {},
 });
 
-let totalReports = 0,
+let reportsNum = 0,
   done = 0,
   other = 0,
   unworthy = 0,
@@ -36,19 +36,19 @@ let totalReports = 0,
   blankets = 0,
   clothNum = 0,
   meals = 0,
-  nasrCity = 0,
-  masrElgdeda = 0,
-  mohandseen = 0,
-  maadi = 0,
-  alex = 0,
-  october = 0,
-  mokatem = 0,
-  faisal = 0,
-  helwan = 0,
-  mohafazat = 0,
-  val = 20,
-  districts = new Array();
-
+  districts = new Array(),
+  branches = {
+    nasrCity: { name: "مدينة نصر", reports: 0 },
+    mohandseen: { name: "المهندسين", reports: 0 },
+    maadi: { name: "المعادي", reports: 0 },
+    october: { name: "اكتوبر", reports: 0 },
+    masrElgdeda: { name: "مصر الجديدة", reports: 0 },
+    alex: { name: "اسكندرية", reports: 0 },
+    faisal: { name: "فيصل", reports: 0 },
+    helwan: { name: "حلوان", reports: 0 },
+    mokatem: { name: "المقطم", reports: 0 },
+    mohafazat: { name: "محافظات", reports: 0 },
+  };
 var ref = firebase.database().ref();
 ref
   .child("reports")
@@ -73,37 +73,37 @@ ref
       }
       switch (data[report].branch.trim()) {
         case "مدينة_نصر":
-          nasrCity++;
+          branches.nasrCity.reports++;
           break;
         case "مصر_الجديدة":
-          masrElgdeda++;
+          branches.masrElgdeda.reports++;
           break;
         case "المهندسين":
-          mohandseen++;
+          branches.mohandseen.reports++;
           break;
         case "اسكندرية":
-          alex++;
+          branches.alex.reports++;
           break;
         case "اكتوبر":
-          october++;
+          branches.october.reports++;
           break;
         case "حلوان":
-          helwan++;
+          branches.helwan.reports++;
           break;
         case "فيصل":
-          faisal++;
+          branches.faisal.reports++;
           break;
         case "المقطم":
-          mokatem++;
+          branches.mokatem.reports++;
           break;
         case "المعادي":
-          maadi++;
+          branches.maadi.reports++;
           break;
-
         default:
-          mohafazat++;
+          branches.mohafazat.reports++;
           break;
       }
+
       if (data[report].blankets) {
         blankets += parseInt(data[report].blankets, 10);
       }
@@ -116,10 +116,8 @@ ref
       if (data[report].clothes_num) {
         clothNum += parseInt(data[report].clothes_num, 10);
       }
-
       districts.push(data[report].area);
-
-      totalReports++;
+      reportsNum++;
     }
     //get top 10 districts
     districts = getFrequency(districts);
@@ -135,58 +133,67 @@ ref
     top10Districts = sortedDistricts.slice(
       Math.max(sortedDistricts.length - 10, 0)
     );
-    //get percentage of each branch
-    nasrCity = Math.round((nasrCity / totalReports) * 100);
-    masrElgdeda = Math.round((masrElgdeda / totalReports) * 100);
-    mohandseen = Math.round((mohandseen / totalReports) * 100);
-    alex = Math.round((alex / totalReports) * 100);
-    october = Math.round((october / totalReports) * 100);
-    helwan = Math.round((helwan / totalReports) * 100);
-    faisal = Math.round((faisal / totalReports) * 100);
-    mokatem = Math.round((mokatem / totalReports) * 100);
-    maadi = Math.round((maadi / totalReports) * 100);
-    mohafazat = Math.round((mohafazat / totalReports) * 100);
   })
   .then(() => {
-    document.querySelector("#nasrCityBar").style.width = nasrCity + "%";
-    document.querySelector("#nasrCity").innerHTML = `<span>${nasrCity}%</span>`;
+    // احصائيات
+    document.getElementById("caseNum").innerHTML = `${caseNum}`;
+    document.getElementById("reportsNum").innerHTML = `${reportsNum}`;
+    document.getElementById("meals").innerHTML = `${meals}`;
+    document.getElementById("blankets").innerHTML = `${blankets}`;
+    document.getElementById("clothes").innerHTML = `${clothNum}`;
+    // الانتهاء من الاحصائيات
 
-    document.querySelector("#elmohandsenBar").style.width = mohandseen + "%";
-    document.querySelector(
-      "#elmohandsen"
-    ).innerHTML = `<span>${mohandseen}%</span>`;
+    // تقرير الفروع
+    const fro3 = document.getElementById("fro3");
+    for (const branch in branches) {
+      //get percentage of each branch
+      branches[branch].reports = Math.round(
+        (branches[branch].reports / reportsNum) * 100
+      );
+      // create progress bar element for each branch
+      fro3.innerHTML += `
+        <div class="row">
+        <div class="col-4">
+          <p>${branches[branch].name}</p>
+        </div>
+        <div class="col-5 p-0 mt-1">
+          <div class="progress">
+            <div class="progress-bar" style="width:${branches[branch].reports}%"></div>
+          </div>
+        </div>
+        <div class="col-3 p-0">${branches[branch].reports}%</div>
+      </div>
+`;
+    }
 
-    document.querySelector("#octoberBar").style.width = october + "%";
-    document.querySelector("#october").innerHTML = `<span>${october}%</span>`;
+    // انتهاء من تقرير الفروع
 
-    document.querySelector("#masrElgdedaBar").style.width = masrElgdeda + "%";
-    document.querySelector(
-      "#masrElgdeda"
-    ).innerHTML = `<span>${masrElgdeda}%</span>`;
+    // مناطق البلاغات
+    const bla8at = document.getElementById("bla8at");
 
-    document.querySelector("#faisalBar").style.width = faisal + "%";
-    document.querySelector("#faisal").innerHTML = `<span>${faisal}%</span>`;
+    for (let i = 0; i < 9; i++) {
+      bla8at.innerHTML += `
+        <div class="row">
+          <div class="col-5">
+            <p>${top10Districts[9 - i][0]}</p>
+          </div>
+          <div class="col-4 p-0 mt-1">
+            <div class="progress">
+              <div class="progress-bar" style="width:${
+                top10Districts[9 - i][1]
+              }%";></div>
+            </div>
+          </div>
+          <div class="col-3 p-0">${top10Districts[9 - i][1]}</div>
+        </div>
+        `;
+    }
+    //
 
-    document.querySelector("#helwanBar").style.width = helwan + "%";
-    document.querySelector("#helwan").innerHTML = `<span>${helwan}%</span>`;
-
-    document.querySelector("#mokatemBar").style.width = mokatem + "%";
-    document.querySelector("#mokatem").innerHTML = `<span>${mokatem}%</span>`;
-
-    document.querySelector("#alexBar").style.width = alex + "%";
-    document.querySelector("#alex").innerHTML = `<span>${alex}%</span>`;
-
-    document.querySelector("#maadiBar").style.width = maadi + "%";
-    document.querySelector("#maadi").innerHTML = `<span>${maadi}%</span>`;
-
-    document.querySelector("#mohafazatBar").style.width = mohafazat + "%";
-    document.querySelector(
-      "#mohafazat"
-    ).innerHTML = `<span>${mohafazat}%</span>`;
-
+    // عدد البلاغات
     var c = Math.PI * (90 * 2);
     // done circle chart
-    let donePct = (done / totalReports) * 100;
+    let donePct = (done / reportsNum) * 100;
     document.querySelector("#done-circle").style.strokeDashoffset =
       ((100 - donePct) / 100) * c;
     document
@@ -194,7 +201,7 @@ ref
       .setAttribute("data-pct", donePct.toFixed());
 
     // other cricle chart
-    let otherPct = (other / totalReports) * 100;
+    let otherPct = (other / reportsNum) * 100;
     document.querySelector("#other-circle").style.strokeDashoffset =
       ((100 - otherPct) / 100) * c;
     document
@@ -202,7 +209,7 @@ ref
       .setAttribute("data-pct", otherPct.toFixed());
 
     // unworthy cirlce chart
-    let unworthyPct = (unworthy / totalReports) * 100;
+    let unworthyPct = (unworthy / reportsNum) * 100;
     document.querySelector("#unworthy-circle").style.strokeDashoffset =
       ((100 - unworthyPct) / 100) * c;
     document
@@ -210,7 +217,7 @@ ref
       .setAttribute("data-pct", unworthyPct.toFixed());
 
     // processing cirlce chart
-    let processingPct = (processing / totalReports) * 100;
+    let processingPct = (processing / reportsNum) * 100;
     document.querySelector("#processing-circle").style.strokeDashoffset =
       ((100 - processingPct) / 100) * c;
     document
@@ -218,13 +225,15 @@ ref
       .setAttribute("data-pct", processingPct.toFixed());
 
     // notExist cirlce chart
-    let notExistPct = (notExist / totalReports) * 100;
+    let notExistPct = (notExist / reportsNum) * 100;
     document.querySelector("#notExist-circle").style.strokeDashoffset =
       ((100 - notExistPct) / 100) * c;
     document
       .querySelector("#notExist-pct")
       .setAttribute("data-pct", notExistPct.toFixed());
+    // انتهاء من تقرير الفروع
   });
+
 const getFrequency = (array) => {
   const map = {};
   array.forEach((item) => {

@@ -1,6 +1,9 @@
 body{
     background-color: rgb(223, 223, 223);
-    color: white;
+    background-image:none;
+}
+* {
+  color: white;
 }
 .card {
     text-align: center;
@@ -43,7 +46,7 @@ body{
   line-height: 160px;
   font-size: 2em;
 }
-.circle-row {
+.circle-row .cont, h2 {
   color: rgb(65, 103, 138);
 }
 
@@ -59,11 +62,26 @@ body{
 }
 .takrer {
   background-color: rgba(105, 182, 245);
-  color: white;
   border-radius: 30px 30px 90px 30px;
 }
 
 .takrer p {
   text-align: left;
 }
+ thead th {
+  background-color: rgb(14, 33, 88);
+  border: 1px solid white;
+}
+ tbody th {
+  background-color:  rgb(32, 99, 154);
+}
+td {
+  color: rgb(30, 8, 112);
 
+}
+#total th, #total td {
+  background-color: rgb(65, 238, 65);
+  color: rgb(30, 8, 112);
+  border: 1px solid rgb(30, 8, 112);
+  
+}

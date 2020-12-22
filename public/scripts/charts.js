@@ -10,20 +10,24 @@ let reportsNum = 0,
   meals = 0,
   districts = [],
   branches = {
-    nasrCity: { name: "مدينة نصر", reports: 0 },
-    mohandseen: { name: "المهندسين", reports: 0 },
-    maadi: { name: "المعادي", reports: 0 },
-    october: { name: "اكتوبر", reports: 0 },
-    masrElgdeda: { name: "مصر الجديدة", reports: 0 },
-    alex: { name: "اسكندرية", reports: 0 },
-    faisal: { name: "فيصل", reports: 0 },
-    helwan: { name: "حلوان", reports: 0 },
-    mokatem: { name: "المقطم", reports: 0 },
-    mohafazat: { name: "محافظات", reports: 0 },
+    nasrCity: { name: "مدينة نصر", reports: 0, twasol: 0, t3amol: 0 },
+    mohandseen: { name: "المهندسين", reports: 0, twasol: 0, t3amol: 0 },
+    maadi: { name: "المعادي", reports: 0, twasol: 0, t3amol: 0 },
+    october: { name: "اكتوبر", reports: 0, twasol: 0, t3amol: 0 },
+    masrElgdeda: { name: "مصر الجديدة", reports: 0, twasol: 0, t3amol: 0 },
+    alex: { name: "اسكندرية", reports: 0, twasol: 0, t3amol: 0 },
+    faisal: { name: "فيصل", reports: 0, twasol: 0, t3amol: 0 },
+    helwan: { name: "حلوان", reports: 0, twasol: 0, t3amol: 0 },
+    mokatem: { name: "المقطم", reports: 0, twasol: 0, t3amol: 0 },
+    mohafazat: { name: "محافظات", reports: 0, twasol: 0, t3amol: 0 },
   },
+  totalTwasol = 0,
+  totalT3amol = 0,
   reportsPerDay = [],
   days = [],
   reportsInEachDay = [];
+const table = document.getElementById("table");
+const fro3 = document.getElementById("fro3");
 
 var ref = firebase.database().ref();
 ref
@@ -33,7 +37,40 @@ ref
     for (const report in data) {
       const day = new Date(Date.parse(data[report].date));
       reportsPerDay.push(day);
-
+      if (data[report].first_feedback === "") {
+        switch (data[report].branch.trim()) {
+          case "مدينة_نصر":
+            branches.nasrCity.twasol++;
+            break;
+          case "مصر_الجديدة":
+            branches.masrElgdeda.twasol++;
+            break;
+          case "المهندسين":
+            branches.mohandseen.twasol++;
+            break;
+          case "اسكندرية":
+            branches.alex.twasol++;
+            break;
+          case "اكتوبر":
+            branches.october.twasol++;
+            break;
+          case "حلوان":
+            branches.helwan.twasol++;
+            break;
+          case "فيصل":
+            branches.faisal.twasol++;
+            break;
+          case "المقطم":
+            branches.mokatem.twasol++;
+            break;
+          case "المعادي":
+            branches.maadi.twasol++;
+            break;
+          default:
+            branches.mohafazat.twasol++;
+            break;
+        }
+      }
       switch (data[report].feed_back_type.trim()) {
         case "تم التعامل":
           done++;
@@ -43,6 +80,38 @@ ref
           break;
         case "":
           processing++;
+          switch (data[report].branch.trim()) {
+            case "مدينة_نصر":
+              branches.nasrCity.t3amol++;
+              break;
+            case "مصر_الجديدة":
+              branches.masrElgdeda.t3amol++;
+              break;
+            case "المهندسين":
+              branches.mohandseen.t3amol++;
+              break;
+            case "اسكندرية":
+              branches.alex.t3amol++;
+              break;
+            case "اكتوبر":
+              branches.october.t3amol++;
+              break;
+            case "حلوان":
+              branches.helwan.t3amol++;
+              break;
+            case "فيصل":
+              branches.faisal.t3amol++;
+              break;
+            case "المقطم":
+              branches.mokatem.t3amol++;
+              break;
+            case "المعادي":
+              branches.maadi.t3amol++;
+              break;
+            default:
+              branches.mohafazat.t3amol++;
+              break;
+          }
           break;
         case "مش موجود":
           notExist++;
@@ -144,7 +213,6 @@ ref
       options: {},
     });
 
-    //
     // احصائيات
     document.getElementById("caseNum").innerHTML = `${caseNum}`;
     document.getElementById("reportsNum").innerHTML = `${reportsNum}`;
@@ -153,9 +221,18 @@ ref
     document.getElementById("clothes").innerHTML = `${clothNum}`;
     // الانتهاء من الاحصائيات
 
-    // تقرير الفروع
-    const fro3 = document.getElementById("fro3");
     for (const branch in branches) {
+      // unfinished reports
+      table.innerHTML += `
+      <tr>
+        <th scope="row">${branches[branch].name}</th>
+        <td>${branches[branch].twasol}</td>
+        <td>${branches[branch].t3amol}</td>
+      </tr>
+      `;
+      totalT3amol += branches[branch].t3amol;
+      totalTwasol += branches[branch].twasol;
+      // تقرير الفروع
       //get percentage of each branch
       branches[branch].reports = Math.round(
         (branches[branch].reports / reportsNum) * 100
@@ -173,8 +250,16 @@ ref
         </div>
         <div class="col-3 p-0">${branches[branch].reports}%</div>
       </div>
-`;
+      `;
     }
+    // add total unfinished reports to the table
+    table.innerHTML += `
+    <tr id="total">
+      <th scope="row">الاجمالي</th>
+      <td>${totalTwasol}</td>
+      <td>${totalT3amol}</td>
+    </tr>
+    `;
 
     // انتهاء من تقرير الفروع
 

@@ -103,22 +103,14 @@ h4 {
     border-right: 2px solid white;
     margin: 0px 20px 0px 20px;
 }
-
-
-
-.login {
-    border-radius: 20px;
-    background-color: #48E873;
-    color: rgb(2, 11, 88);
+#login {
+    background-color: rgb(88, 245, 88); color: black
 }
-
-.login:hover {
+#login:hover {
     background-color: #E81A1C;
     transition: .3s;
     color: white;
 }
-
-
 
 .head {
     border: 1px solid grey;

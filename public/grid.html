@@ -17,7 +17,7 @@
     <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
   </head>
 
-  <body>
+  <body style="background-image: none">
     <nav
       class="navbar navbar-expand-lg navbar-dark bg-dark"
       style="
@@ -30,10 +30,6 @@
         );
       "
     >
-      <!-- <a class="navbar-brand" href="#"
-        ><i class="fas fa-portrait fa-xl ml-3"></i>محمد احمد <br />
-        <i class="fas fa-portrait fa-xl ml-3"></i> فرع المهندسين</a
-      > -->
       <button
         class="navbar-toggler"
         type="button"
@@ -53,7 +49,7 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link blue-gradient ml-5" href="charts.html">
-              <i class="fas fa-portrait fa-xl ml-3"></i> احصائيات
+              <i class="fas fa-chart-bar ml-3"></i> احصائيات
             </a>
           </li>
           <li class="nav-item active">
@@ -74,14 +70,12 @@
     </nav>
     <div class="container-fluid my-3">
       <div id="myGrid" style="height: 700px" class="ag-theme-alpine"></div>
-      <a href="index.html"
-        ><button class="btn btn-success">تسجيل بلاغ جديد</button></a
-      >
+
       <button
-        class="btn btn-secondary"
+        class="blue-gradient btn"
         id="getData"
         onclick="getData()"
-        style="background-color: #28a745"
+        style="color: white"
       >
         Export data to Excel
       </button>

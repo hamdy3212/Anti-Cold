@@ -1,99 +1,79 @@
 <!DOCTYPE html>
 <html dir="rtl" lang="ar">
-  <head>
-    <title>البلاغات</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
-    />
-    <link rel="icon" href="images/snowflake.png" type="image/x-icon" />
-    <link rel="stylesheet" href="style.css" />
-    <script
-      src="https://kit.fontawesome.com/dc47a1c277.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
-  </head>
 
-  <body style="background-image: none">
-    <nav
-      class="navbar navbar-expand-lg navbar-dark bg-dark"
-      style="
+<head>
+  <title>البلاغات</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+  <link rel="icon" href="images/snowflake.png" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/dc47a1c277.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
+</head>
+
+<body style="background-image: none">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="
         border-radius: 0 0 30px 30px;
         background: rgb(4, 8, 105);
         background: linear-gradient(
           90deg,
-          rgba(4, 8, 105, 1) 0%,
+           rgba(4, 8, 105, 1) 0%,
           rgba(3, 0, 34, 1) 46%
         );
-      "
-    >
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      ">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" ></span>
+    </button>
 
-      <div
-        class="collapse navbar-collapse container"
-        id="navbarSupportedContent"
-      >
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link blue-gradient ml-5" href="charts.html">
-              <img
-                src="icons/dashboard.png"
-                style="width: 20px; height: 20px"
-                class="ml-3"
-              />احصائيات
-            </a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link blue-gradient ml-5" href="grid.html"
-              >عرض البلاغات</a
-            >
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <div class="container-fluid my-3">
-      <div id="myGrid" style="height: 700px" class="ag-theme-alpine"></div>
-      <div>
-          <button
-            class="blue-gradient btn"
-            id="getData"
-            onclick="getData()"
-            style="color: white"
-          >
-            Export data to Excel
-          </button>
-        </div>
-        <div>
-          <button onclick="window.location.href='index.html';" style="float: left; margin-top: 10px; background-color: transparent" >            
-            تسجيل الخروج
-          </button>
-        </div>
-      </div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link blue-gradient my-1 ml-5" href="charts.html">
+            <img src="icons/dashboard.png" style="width: 20px; height: 20px" class="ml-3" />احصائيات
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link blue-gradient my-1 ml-5" href="grid.html">عرض البلاغات</a>
+        </li>
+      </ul>
     </div>
+  </nav>
 
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+  <div class="container-fluid my-3">
+    <div id="myGrid" style="height: 700px" class="ag-theme-alpine"></div>
+    <div>
+      <button class="blue-gradient btn" id="getData" onclick="getData()" style="color: white">
+        Export data to Excel
+      </button>
+    </div>
+    <div>
+      <button onclick="window.location.href='index.html';"
+        style="float: left; margin-top: 10px; background-color: transparent">
+        تسجيل الخروج
+      </button>
+    </div>
+  </div>
+  </div>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
-    <script type="text/javascript" src="scripts/FileSaver.min.js"></script>
-    <script type="text/javascript" src="scripts/xlsx.full.min.js"></script>
-    <script src="scripts/config.js"></script>
-    <script src="scripts/grid.js"></script>
-  </body>
+  <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>
+  <script type="text/javascript" src="scripts/FileSaver.min.js"></script>
+  <script type="text/javascript" src="scripts/xlsx.full.min.js"></script>
+  <script src="scripts/config.js"></script>
+  <script src="scripts/grid.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

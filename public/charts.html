@@ -51,20 +51,16 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link blue-gradient ml-5" href="charts.html">
-              <i class="fas fa-chart-bar ml-3"></i>احصائيات
+              <img
+                src="icons/dashboard.png"
+                class="ml-3"
+                style="width: 20px; height: 20px"
+              />احصائيات
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link blue-gradient ml-5" href="grid.html"
               >عرض البلاغات</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link ml-5"
-              style="background-color: red"
-              href="index.html"
-              >تسجيل الخروج</a
             >
           </li>
         </ul>
@@ -79,14 +75,14 @@
         padding: 5px 30px 5px 30px;
       "
     >
-      <h4><i class="fas fa-chart-bar ml-3"></i>إحصائيات</h4>
+      <h4><img src="icons/dashboard.png" class="icon ml-3" />إحصائيات</h4>
     </div>
     <div class="container my-5" style="text-align: center">
       <div class="row" style="margin-top: 110px">
         <div class="col-md-4">
           <div class="card pt-3 blue-gradient">
             <h3>
-              <i class="fas fa-pray ml-3"></i>
+              <img src="icons/homeless.png" class="icon ml-3" />
               <span id="caseNum">0</span>
             </h3>
             <p>إجمالي عدد الحالات</p>
@@ -94,14 +90,19 @@
         </div>
         <div class="col-md-4">
           <div class="card pt-3 pink-gradient">
-            <h3 id="volunteerNum"><i class="fas fa-user-alt ml-3"></i>0</h3>
+            <h3 id="volunteerNum">
+              <img src="icons/volunteer.png" class="icon ml-3" />0
+            </h3>
             <p>اجمالي عدد المتطوعين</p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card pt-3 orange-gradient">
             <h3>
-              <i class="fas fa-bullhorn ml-3"></i><span id="reportsNum">0</span>
+              <img src="icons/horn.png" class="icon ml-3" /><span
+                id="reportsNum"
+                >0</span
+              >
             </h3>
             <p>اجمالي عدد البلاغات</p>
           </div>
@@ -124,14 +125,21 @@
       >
         <div class="col-md-4">
           <div class="card pt-3 blue-gradient">
-            <h3><i class="fas fa-bed ml-3"></i><span id="blankets">0</span></h3>
+            <h3>
+              <img src="icons/blanket.png" class="icon ml-3" /><span
+                id="blankets"
+                >0</span
+              >
+            </h3>
             <p>اجمالي عدد البطاطين</p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card pt-3 pink-gradient">
             <h3>
-              <i class="fas fa-tshirt ml-3"></i><span id="clothes">0</span>
+              <img src="icons/cloth.png" class="icon ml-3" /><span id="clothes"
+                >0</span
+              >
             </h3>
             <p>اجمالي عدد الملابس</p>
           </div>
@@ -139,7 +147,9 @@
         <div class="col-md-4">
           <div class="card pt-3 orange-gradient">
             <h3>
-              <i class="fas fa-utensils ml-3"></i><span id="meals">0</span>
+              <img src="icons/meal.png" class="icon ml-3" /><span id="meals"
+                >0</span
+              >
             </h3>
             <p>اجمالي عدد الوجبات</p>
           </div>
@@ -403,6 +413,14 @@
           </div>
         </div>
       </div>
+
+      <button
+        style="float: left; color: black; background-color: transparent"
+        href="index.html"
+        onclick="window.location.href='index.html';"
+      >
+        تسجيل الخروج
+      </button>
     </div>
     <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-database.js"></script>

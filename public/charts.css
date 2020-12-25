@@ -83,5 +83,8 @@ td {
   background-color: rgb(65, 238, 65);
   color: rgb(30, 8, 112);
   border: 1px solid rgb(30, 8, 112);
-  
+}  
+.icon {
+  width: 30px;
+  height: 30px;
 }

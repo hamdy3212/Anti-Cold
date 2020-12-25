@@ -49,7 +49,11 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <a class="nav-link blue-gradient ml-5" href="charts.html">
-              <i class="fas fa-chart-bar ml-3"></i> احصائيات
+              <img
+                src="icons/dashboard.png"
+                style="width: 20px; height: 20px"
+                class="ml-3"
+              />احصائيات
             </a>
           </li>
           <li class="nav-item active">
@@ -57,28 +61,27 @@
               >عرض البلاغات</a
             >
           </li>
-          <li class="nav-item">
-            <a
-              class="nav-link ml-5"
-              style="background-color: red"
-              href="index.html"
-              >تسجيل الخروج</a
-            >
-          </li>
         </ul>
       </div>
     </nav>
     <div class="container-fluid my-3">
       <div id="myGrid" style="height: 700px" class="ag-theme-alpine"></div>
-
-      <button
-        class="blue-gradient btn"
-        id="getData"
-        onclick="getData()"
-        style="color: white"
-      >
-        Export data to Excel
-      </button>
+      <div>
+          <button
+            class="blue-gradient btn"
+            id="getData"
+            onclick="getData()"
+            style="color: white"
+          >
+            Export data to Excel
+          </button>
+        </div>
+        <div>
+          <button onclick="window.location.href='index.html';" style="float: left; margin-top: 10px; background-color: transparent" >            
+            تسجيل الخروج
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->

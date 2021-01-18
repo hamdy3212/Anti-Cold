@@ -182,7 +182,6 @@ ref
       }
       if (data[report].branch !== "محافظات") {
         districts.push(data[report].area);
-        console.log(data[report]);
       }
       reportsNum++;
     }

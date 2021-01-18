@@ -47,8 +47,11 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link blue-gradient my-1 ml-5" href="charts.html">
+          <li class="nav-item">
+            <a
+              class="nav-link blue-gradient my-1 ml-5 active"
+              href="charts.html"
+            >
               <img
                 src="icons/dashboard.png"
                 class="ml-3"
@@ -89,8 +92,9 @@
         </div>
         <div class="col-md-4">
           <div class="card pt-3 pink-gradient">
-            <h3 id="volunteerNum">
-              <img src="icons/volunteer.png" class="icon ml-3" />0
+            <h3>
+              <img src="icons/volunteer.png" class="icon ml-3" />
+              <span id="volunteersNum">0</span>
             </h3>
             <p>اجمالي عدد المتطوعين</p>
           </div>
@@ -241,7 +245,7 @@
               </div>
             </div>
             <div class="row circle-row">
-              <div class="col-md-4">
+              <div class="col-sm-6">
                 <div class="cont" id="done-pct" data-pct="100">
                   <svg
                     class="svg"
@@ -272,42 +276,9 @@
                     ></circle>
                   </svg>
                 </div>
-                <h2 class="mb-5">تم التعامل</h2>
+                <h2>تم التعامل</h2>
               </div>
-              <div class="col-md-4">
-                <div class="cont" id="other-pct" data-pct="100">
-                  <svg
-                    class="svg"
-                    width="200"
-                    height="200"
-                    viewPort="0 0 100 100"
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle
-                      r="90"
-                      cx="100"
-                      cy="100"
-                      fill="transparent"
-                      stroke-dasharray="565.48"
-                      stroke-dashoffset="0"
-                    ></circle>
-                    <circle
-                      class="bar"
-                      id="other-circle"
-                      r="90"
-                      cx="100"
-                      cy="100"
-                      fill="transparent"
-                      transform="rotate(-90, 100, 100) "
-                      stroke-dasharray="565.48"
-                      stroke-dashoffset="0"
-                    ></circle>
-                  </svg>
-                </div>
-                <h2 class="mb-5">تعامل اخر</h2>
-              </div>
-              <div class="col-md-4">
+              <div class="col-sm-6">
                 <div class="cont" id="unworthy-pct" data-pct="100">
                   <svg
                     class="svg"
@@ -338,11 +309,46 @@
                     ></circle>
                   </svg>
                 </div>
-                <h2 class="mb-5">غير مستحق</h2>
+                <h2>غير مستحق</h2>
               </div>
             </div>
             <div class="row circle-row">
-              <div class="col-md-6">
+              <div class="col-sm-12">
+                <div class="cont" id="other-pct" data-pct="100">
+                  <svg
+                    class="svg"
+                    width="200"
+                    height="200"
+                    viewPort="0 0 100 100"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      r="90"
+                      cx="100"
+                      cy="100"
+                      fill="transparent"
+                      stroke-dasharray="565.48"
+                      stroke-dashoffset="0"
+                    ></circle>
+                    <circle
+                      class="bar"
+                      id="other-circle"
+                      r="90"
+                      cx="100"
+                      cy="100"
+                      fill="transparent"
+                      transform="rotate(-90, 100, 100) "
+                      stroke-dasharray="565.48"
+                      stroke-dashoffset="0"
+                    ></circle>
+                  </svg>
+                </div>
+                <h2>تعامل اخر</h2>
+              </div>
+            </div>
+            <div class="row circle-row mb-5">
+              <div class="col-sm-6">
                 <div class="cont" id="processing-pct" data-pct="100">
                   <svg
                     class="svg"
@@ -373,9 +379,9 @@
                     ></circle>
                   </svg>
                 </div>
-                <h2 class="mb-5">جاري التعامل</h2>
+                <h2>جاري التعامل</h2>
               </div>
-              <div class="col-md-6">
+              <div class="col-sm-6">
                 <div class="cont" id="notExist-pct" data-pct="100">
                   <svg
                     class="svg"
@@ -406,7 +412,7 @@
                     ></circle>
                   </svg>
                 </div>
-                <h2 class="mb-5">غير موجود</h2>
+                <h2>غير موجود</h2>
               </div>
             </div>
           </div>
@@ -414,7 +420,7 @@
       </div>
 
       <button
-        style="float: left; color: black; background-color: transparent"
+        class="btn btn-danger float-left"
         href="index.html"
         onclick="window.location.href='index.html';"
       >

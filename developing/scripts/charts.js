@@ -23,6 +23,7 @@ let reportsNum = 0,
   },
   totalTwasol = 0,
   totalT3amol = 0,
+  volunteersNum = 0,
   reportsPerDay = [],
   days = [],
   reportsInEachDay = [];
@@ -30,6 +31,22 @@ const table = document.getElementById("table");
 const fro3 = document.getElementById("fro3");
 
 var ref = firebase.database().ref();
+ref.child("hamalat").once("value", function (snapshot) {
+  var hamalat = snapshot.val();
+  for (const hamla in hamalat) {
+    volunteersNum += hamalat[hamla].boys_count;
+    volunteersNum += hamalat[hamla].girls_count;
+
+    const cases = hamalat[hamla].cases;
+    for (const Case in cases) {
+      blankets += cases[Case].blankets;
+      meals += cases[Case].meals;
+      clothNum += cases[Case].clothes;
+      caseNum++;
+    }
+  }
+});
+
 ref
   .child("reports")
   .once("value", function (snapshot) {
@@ -163,7 +180,10 @@ ref
       if (data[report].clothes_num) {
         clothNum += parseInt(data[report].clothes_num, 10);
       }
-      districts.push(data[report].area);
+      if (data[report].branch !== "محافظات") {
+        districts.push(data[report].area);
+        console.log(data[report]);
+      }
       reportsNum++;
     }
     // get reports per day
@@ -178,6 +198,7 @@ ref
 
     // get top 10 districts
     districts = getFrequency(districts);
+
     var sortedDistricts = [];
     for (var item in districts) {
       sortedDistricts.push([item, districts[item]]);
@@ -216,9 +237,11 @@ ref
     // احصائيات
     document.getElementById("caseNum").innerHTML = `${caseNum}`;
     document.getElementById("reportsNum").innerHTML = `${reportsNum}`;
+    document.getElementById("volunteersNum").innerHTML = `${volunteersNum}`;
     document.getElementById("meals").innerHTML = `${meals}`;
     document.getElementById("blankets").innerHTML = `${blankets}`;
     document.getElementById("clothes").innerHTML = `${clothNum}`;
+
     // الانتهاء من الاحصائيات
 
     for (const branch in branches) {

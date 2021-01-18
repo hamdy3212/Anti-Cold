@@ -10,7 +10,6 @@
   <script src="https://kit.fontawesome.com/dc47a1c277.js" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.js"></script>
 </head>
-
 <body style="background-image: none">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="
         border-radius: 0 0 30px 30px;
@@ -34,13 +33,12 @@
             <img src="icons/dashboard.png" style="width: 20px; height: 20px" class="ml-3" />احصائيات
           </a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link blue-gradient my-1 ml-5" href="grid.html">عرض البلاغات</a>
+        <li class="nav-item ">
+          <a class="nav-link blue-gradient my-1 ml-5 active" href="grid.html">عرض البلاغات</a>
         </li>
       </ul>
     </div>
   </nav>
-
   <div class="container-fluid my-3">
     <div id="myGrid" style="height: 700px" class="ag-theme-alpine"></div>
     <div>
@@ -50,16 +48,15 @@
     </div>
     <div>
       <button onclick="window.location.href='index.html';"
-        style="float: left; margin-top: 10px; background-color: transparent">
+      class="btn btn-danger float-left mt-2"
+      >
         تسجيل الخروج
       </button>
     </div>
   </div>
   </div>
-
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
-
   <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
   <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-analytics.js"></script>

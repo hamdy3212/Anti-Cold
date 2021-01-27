@@ -154,7 +154,6 @@ var columnDefs = [
     editable: true,
   },
 ];
-
 function swap(input, index_A, index_B) {
   let temp = input[index_A];
   input[index_A] = input[index_B];

@@ -1,13 +1,10 @@
-var firebaseConfig = {
-    apiKey: "AIzaSyBKreSoYNMBaG0xKnL6g9azBXTzHl1obPY",
-    authDomain: "mokaf7a.firebaseapp.com",
-    databaseURL: "https://mokaf7a.firebaseio.com",
-    projectId: "mokaf7a",
-    storageBucket: "mokaf7a.appspot.com",
-    messagingSenderId: "508586054432",
-    appId: "1:508586054432:web:0fd8d0dbffa5ba92d2fd45",
-    measurementId: "G-QGGJPL35WR"
+const firebaseConfig = {
+  apiKey: "AIzaSyA2rvFkJOZriTc9MjhbiUOH0NJFlTR4jsM",
+  authDomain: "anti-cold.firebaseapp.com",
+  projectId: "anti-cold",
+  storageBucket: "anti-cold.appspot.com",
+  messagingSenderId: "307280339519",
+  appId: "1:307280339519:web:18897dd80a37da7ded4e8a",
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();

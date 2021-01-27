@@ -1,0 +1,19 @@
+{
+  "name": "anti-cold",
+  "version": "1.0.0",
+  "description": "A website that help the homeless.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamdy3212/Anti-Cold.git"
+  },
+  "author": "hamdy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hamdy3212/Anti-Cold/issues"
+  },
+  "homepage": "https://github.com/hamdy3212/Anti-Cold#readme"
+}
